@@ -1,0 +1,19 @@
+service: japanese-test
+
+provider:
+  name: aws
+  runtime: python3.8
+  memorySize: 256
+  variableSyntax: "\\${{([ ~:a-zA-Z0-9._@\\'\",\\-\\/\\(\\)]+?)}}"
+
+custom:
+  stage: ${opt:stage, 'develop'}
+  myname: ${opt:myname, 'システム管理者'}
+  
+functions:
+  hello:
+    handler: handler.hello
+    environment:
+      stage: ${self:custom.stage}
+      myname: ${self:custom.myname}
+
