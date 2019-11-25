@@ -1,6 +1,5 @@
 import os
 import boto3
-from email.headerregistry import Address
 from email.header import Header
 from email.utils import formataddr
 
