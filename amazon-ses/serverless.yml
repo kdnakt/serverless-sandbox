@@ -1,0 +1,20 @@
+service: amazon-ses
+
+provider:
+  name: aws
+  runtime: python3.8
+  memorySize: 256
+  region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "ses:SendEmail"
+      Resource: "*"
+
+functions:
+  send_mail:
+    handler: handler.send_mail
+    environment:
+      SES_REGION: ${opt:ses_region, 'us-west-2'}
+      SES_FROM_ADDR: ${opt:from_addr}
+      SES_FROM_NAME: ${opt:from_name}
