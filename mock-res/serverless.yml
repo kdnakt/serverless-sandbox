@@ -65,7 +65,7 @@ functions:
           path: /
           method: get
           cors: true
-          integrationn: mock
+          integration: mock
           request:
             template:
               application/json: '{"statusCode":200}'
