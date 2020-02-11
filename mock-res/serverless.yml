@@ -58,11 +58,11 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
+  v1:
     handler: handler.hello
     events:
       - http:
-          path: /
+          path: /v1
           method: get
           cors: true
           integration: mock
@@ -75,7 +75,66 @@ functions:
             statusCodes:
               200:
                 pattern: ''
-            template: ${file(template.yml)}
+            template: |
+              <html>
+              <body>
+                <h1>Sample Page v1</h1>
+              </body>
+              </html>
+  v2:
+    handler: handler.hello
+    events:
+      - http:
+          path: /v2
+          method: get
+          cors: true
+          integration: mock
+          request:
+            template:
+              application/json: '{"statusCode":200}'
+          response:
+            headers:
+              Content-Type: "'text/html'"
+            statusCodes:
+              200:
+                pattern: ''
+            template: ${file(v2.yml):html}
+  v3:
+    handler: handler.hello
+    events:
+      - http:
+          path: /v3
+          method: get
+          cors: true
+          integration: mock
+          request:
+            template:
+              application/json: '{"statusCode":200}'
+          response:
+            headers:
+              Content-Type: "'text/html'"
+            statusCodes:
+              200:
+                pattern: ''
+            template: ${file(v3.yml)}
+  v4:
+    handler: handler.hello
+    events:
+      - http:
+          path: /v4
+          method: get
+          cors: true
+          integration: mock
+          request:
+            template:
+              application/json: '{"statusCode":200}'
+          response:
+            headers:
+              Content-Type: "'text/html'"
+            statusCodes:
+              200:
+                pattern: ''
+            template: ${file(v4.html)}
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
