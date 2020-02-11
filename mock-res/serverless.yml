@@ -75,7 +75,7 @@ functions:
             statusCodes:
               200:
                 pattern: ''
-            template: ${file(template.yml):html}
+            template: ${file(template.yml)}
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
