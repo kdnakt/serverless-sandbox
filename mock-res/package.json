@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "csso": "^4.0.2"
+    "csso": "^4.0.2",
+    "uglify-js": "^3.7.7"
   }
 }
