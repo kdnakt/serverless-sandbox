@@ -59,7 +59,7 @@ provider:
 
 functions:
   v1:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v1
@@ -82,7 +82,7 @@ functions:
               </body>
               </html>
   v2:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v2
@@ -100,7 +100,7 @@ functions:
                 pattern: ''
             template: ${file(v2.yml):html}
   v3:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v3
@@ -118,7 +118,7 @@ functions:
                 pattern: ''
             template: ${file(v3.yml)}
   v4:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v4
@@ -136,7 +136,7 @@ functions:
                 pattern: ''
             template: ${file(v4.html)}
   v5:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v5
@@ -164,7 +164,7 @@ functions:
               </body>
               </html>
   v6:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v6
@@ -182,7 +182,7 @@ functions:
                 pattern: ''
             template: ${file(v6.html)}
   v7:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v7
@@ -200,7 +200,7 @@ functions:
                 pattern: ''
             template: ${file(v7.html)}
   v8:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v8
@@ -218,7 +218,7 @@ functions:
                 pattern: ''
             template: ${file(v8.html)}
   v9:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v9
@@ -236,7 +236,7 @@ functions:
                 pattern: ''
             template: ${file(v9.html)}
   v10:
-    handler: handler.hello
+    handler: dummy
     events:
       - http:
           path: /v10
