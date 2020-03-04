@@ -28,7 +28,7 @@ provider:
 #  stage: dev
   region: ap-northeast-1
 
-  stackName: serverless-framework-version-1-65-0-test-stack
+  stackName: serverless-framework-1-65-0-test-stack
 
   iamRoleStatements:
     - Effect: "Allow"
