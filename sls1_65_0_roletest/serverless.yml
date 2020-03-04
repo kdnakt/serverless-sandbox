@@ -28,6 +28,8 @@ provider:
 #  stage: dev
 #  region: us-east-1
 
+  stackName: serverless-framework-version-1-65-0-test-stack
+
   iamRoleStatements:
     - Effect: "Allow"
       Action:
