@@ -20,6 +20,13 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     ROOMS_TABLENAME: ${self:custom.roomsTable}
     CONNECTIONS_TABLENAME: ${self:custom.connectionsTable}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource:
+        - arn:aws:dynamodb:ap-northeast-1:*:table/${self:custom.roomsTable}
+        - arn:aws:dynamodb:ap-northeast-1:*:table/${self:custom.connectionsTable}
 
 custom:
   webpack:
