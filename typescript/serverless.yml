@@ -4,11 +4,6 @@ service:
 #app: your-app-name
 #org: your-org-name
 
-custom:
-  webpack:
-    webpackConfig: ./webpack.config.js
-    includeModules: true
-
 # Add the serverless-webpack plugin
 plugins:
   - serverless-webpack
@@ -16,10 +11,22 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  memorySize: 256
+  region: ap-northeast-1
   apiGateway:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    ROOMS_TABLENAME: ${self:custom.roomsTable}
+    CONNECTIONS_TABLENAME: ${self:custom.connectionsTable}
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+  roomsTable: ${self:service.name}-rooms-${self:provider.stage}
+  connectionsTable: ${self:service.name}-connections-${self:provider.stage}
 
 functions:
   hello:
@@ -28,3 +35,36 @@ functions:
       - http:
           method: get
           path: hello
+
+resources:
+  Resources:
+    RoomsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.roomsTable}
+        AttributeDefinitions:
+          - AttributeName: RoomId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: RoomId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        SSESpecification:
+          SSEEnabled: True
+    ConnectionsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.connectionsTable}
+        AttributeDefinitions:
+          - AttributeName: RoomId
+            AttributeType: S
+          - AttributeName: ConnectionId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: RoomId
+            KeyType: HASH
+          - AttributeName: ConnectionId
+            KeyType: RANGE
+        BillingMode: PAY_PER_REQUEST
+        SSESpecification:
+          SSEEnabled: True
