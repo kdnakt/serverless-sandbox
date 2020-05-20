@@ -37,7 +37,7 @@ custom:
 
 functions:
   hello:
-    handler: handler.hello
+    handler: ApiHandler.hello
     events:
       - http:
           method: get
