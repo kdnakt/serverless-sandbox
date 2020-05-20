@@ -7,6 +7,8 @@ const db = new DynamoDB.DocumentClient();
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
   console.log('event:', event);
   console.log('context:', _context);
+  console.log(event.headers ? `Cookie: ${event.headers.Cookie}` : 'no headers');
+  console.log(event.queryStringParameters ? `query: id=${event.queryStringParameters.id}` : 'no query');
   let res: any = {
     statusCode: 500
   };
