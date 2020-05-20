@@ -42,6 +42,8 @@ functions:
       - http:
           method: get
           path: hello
+          cors:
+            origin: http://localhost:3000
 
 resources:
   Resources:
