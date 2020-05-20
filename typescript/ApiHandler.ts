@@ -5,7 +5,8 @@ import { DynamoDB } from 'aws-sdk';
 const db = new DynamoDB.DocumentClient();
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
-  console.log(`${process.env.ROOMS_TABLENAME}`);
+  console.log('event:', event);
+  console.log('context:', _context);
   let res: any = {
     statusCode: 500
   };
