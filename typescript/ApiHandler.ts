@@ -18,6 +18,9 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
   }).promise().then(() => {
     res = {
       statusCode: 200,
+      headers: {
+        'Set-Cookie': 'hoge=fuga',
+      },
       body: JSON.stringify({
         message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
         input: event,
