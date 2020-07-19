@@ -15,11 +15,14 @@ plugins:
 
 provider:
   name: aws
+  region: ap-northeast-1
+  memorySize: 256
   runtime: nodejs12.x
   apiGateway:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    TARGET_URL: https://kdnakt.hatenablog.com/feed
 
 functions:
   hello:
