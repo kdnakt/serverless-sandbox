@@ -9,6 +9,8 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
   console.log('target:', targetUrl);
   const res = await p.parseURL(targetUrl);
   console.log('res:', res);
+  const isoDate = res.items[0].isoDate;
+  console.log('isoDate:', isoDate);
   return {
     statusCode: 200,
     body: JSON.stringify({
