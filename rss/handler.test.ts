@@ -30,3 +30,12 @@ test('should parse url', done => {
     done();
   });
 });
+
+test('should parse xml', async () => {
+  const output = await parse(xml);
+  expect(output).toEqual({
+    items: [{
+      title: 'Hello World!',
+    }]
+  });
+});

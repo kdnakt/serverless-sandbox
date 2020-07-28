@@ -2,11 +2,14 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 import * as Parser from 'rss-parser';
 
-const p = new Parser();
+const parser = new Parser();
 
-export const parse = async (url: string) => {
-  const output = await p.parseURL(url);
-  return output;
+export const parse = async (feedUrlOrXml: string) => {
+  if (!feedUrlOrXml.startsWith("http")) {
+    // for testing purpose
+    return await parser.parseString(feedUrlOrXml);
+  }
+  return await parser.parseURL(feedUrlOrXml);
 }
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
