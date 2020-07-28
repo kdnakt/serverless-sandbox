@@ -21,12 +21,12 @@ test('should parse url', done => {
       url += ':' + addr.port;
     }
     const output = await parse(url);
-    server.close();
     expect(output).toEqual({
       items: [{
         title: 'Hello World!',
       }]
     });
+    server.close();
     done();
   });
 });
