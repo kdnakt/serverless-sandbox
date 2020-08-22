@@ -1,0 +1,17 @@
+service: java-envvar
+
+provider:
+  name: aws
+  runtime: java8
+  region: ap-northeast-1
+  memorySize: 256
+
+package:
+  artifact: target/hello-dev.jar
+
+functions:
+  hello:
+    handler: com.serverless.Handler
+    environment:
+      STAGE: dev
+      JAVA_TOOL_OPTIONS: -Dapp.name=exampleApp
