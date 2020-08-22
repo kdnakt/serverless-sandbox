@@ -17,8 +17,10 @@ public class Handler implements RequestHandler<Map<String, Object>, ApiGatewayRe
 	public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
 		LOG.info("STAGE: {}", System.getenv("STAGE"));
 		LOG.info("appName: {}", System.getProperty("app.name"));
+		LOG.info("appVersion: {}", System.getProperty("app.version"));
 		input.put("System::STAGE", System.getenv("STAGE"));
 		input.put("System::appName", System.getProperty("app.name"));
+		input.put("System::appVersion", System.getProperty("app.version"));
 		Response responseBody = new Response("Go Serverless v1.x! Your function executed successfully!", input);
 		return ApiGatewayResponse.builder()
 				.setStatusCode(200)

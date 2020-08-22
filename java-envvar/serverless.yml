@@ -14,4 +14,7 @@ functions:
     handler: com.serverless.Handler
     environment:
       STAGE: dev
-      JAVA_TOOL_OPTIONS: -Dapp.name=exampleApp
+      JAVA_TOOL_OPTIONS:
+        -Dapp.name=exampleApp2
+        -Dapp.version=3
+
