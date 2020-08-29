@@ -2,7 +2,7 @@ service: java-envvar
 
 provider:
   name: aws
-  runtime: java8
+  runtime: java11
   region: ap-northeast-1
   memorySize: 256
 
